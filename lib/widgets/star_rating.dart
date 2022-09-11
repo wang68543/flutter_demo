@@ -79,26 +79,36 @@ class _WStarRatingState extends State<WStarRating> {
       stars.add(star);
     }
     double leftWidth = ((widget.rating / oneValue) - entireCount) * widget.size;
-    print("宽度:$leftWidth");
+    // final halfStar = ClipRect(
+    //   clipper: WStarClipper(leftWidth),
+    //   child: star,
+    // );
+    double widthFactor = widget.rating / widget.maxRating -
+        (widget.rating / widget.maxRating).floor();
+    print("factor===$widthFactor");
     final halfStar = ClipRect(
-      clipper: WStarClipper(leftWidth),
-      child: star,
+      child: Align(
+        alignment: Alignment.centerLeft,
+        widthFactor: widthFactor,
+        child: star,
+      ),
     );
+
     stars.add(halfStar);
     return stars;
   }
 }
+//https://blog.csdn.net/qq_14876133/article/details/125408952
+// class WStarClipper extends CustomClipper<Rect> {
+//   double width;
+//   WStarClipper(this.width);
+//   @override
+//   Rect getClip(Size size) {
+//     throw Rect.fromLTWH(0, 0, 20, size.height);
+//   }
 
-class WStarClipper extends CustomClipper<Rect> {
-  double width;
-  WStarClipper(this.width);
-  @override
-  Rect getClip(Size size) {
-    throw Rect.fromLTRB(0, 0, width, size.height);
-  }
-
-  @override
-  bool shouldReclip(covariant WStarClipper oldClipper) {
-    throw oldClipper.width != width;
-  }
-}
+//   @override
+//   bool shouldReclip(WStarClipper oldClipper) {
+//     throw oldClipper.width != width;
+//   }
+// }

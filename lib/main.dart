@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_demo/WStarRating.dart';
+import 'package:flutter_demo/widgets/star_rating.dart';
 
 void main() {
   runApp(const MyApp());
