@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_demo/widgets/dashed_line.dart';
 import 'package:flutter_demo/widgets/star_rating.dart';
 
 void main() {
@@ -100,6 +101,13 @@ class _MyHomePageState extends State<MyHomePage> {
               'You have pushed the button this many times:',
             ),
             WStarRating(rating: 6.5),
+            const SizedBox(
+              width: 200,
+              child: DashedLine(
+                axis: Axis.horizontal,
+                dashedWidth: 10,
+              ),
+            ),
             Text(
               '$_counter',
               style: Theme.of(context).textTheme.headline4,
